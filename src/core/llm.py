@@ -39,7 +39,9 @@ def build_chat_model(
             model=model_name or os.getenv("LLM_MODEL", "gemini-2.5-flash"),
             temperature=temperature,
             google_api_key=os.getenv("GOOGLE_API_KEY"),
+            max_retries=5, # Nên giữ lại cấu hình retries nếu bạn bị lỗi 429
         )
+        
     if provider == "ollama":
         from langchain_ollama import ChatOllama
 
@@ -48,7 +50,28 @@ def build_chat_model(
             base_url=os.getenv("OLLAMA_BASE_URL", "http://localhost:11434"),
             temperature=temperature,
         )
-    raise ValueError("This lab supports only the `google` and `ollama` providers.")
+        
+    if provider == "openai":
+        from langchain_openai import ChatOpenAI
+
+        return ChatOpenAI(
+            model=model_name or os.getenv("OPENAI_MODEL", "gpt-4o-mini"),
+            temperature=temperature,
+            api_key=os.getenv("OPENAI_API_KEY"),
+            max_retries=5,
+        )
+    
+    if provider == "custom":
+        from langchain_openai import ChatOpenAI
+
+        return ChatOpenAI(
+            model=model_name or os.getenv("CUSTOM_LLM_MODEL"),
+            openai_api_key=os.getenv("CUSTOM_LLM_KEY"),
+            openai_api_base=os.getenv("CUSTOM_LLM_URL"),
+            temperature=temperature,
+        )
+
+    raise ValueError("This lab supports only the `google`, `ollama`, and `openai` providers.")
 
 
 def extract_json_object(raw: Any) -> dict[str, Any]:

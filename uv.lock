@@ -558,6 +558,38 @@ wheels = [
 ]
 
 [[package]]
+name = "orderdesk-langgraph-lab"
+version = "0.2.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "langchain" },
+    { name = "langchain-core" },
+    { name = "langchain-google-genai" },
+    { name = "langchain-ollama" },
+    { name = "langgraph" },
+    { name = "pydantic" },
+    { name = "python-dotenv" },
+]
+
+[package.optional-dependencies]
+dev = [
+    { name = "pytest" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "langchain", specifier = ">=1.0.0" },
+    { name = "langchain-core", specifier = ">=0.3.0" },
+    { name = "langchain-google-genai", specifier = ">=2.1.0" },
+    { name = "langchain-ollama", specifier = ">=0.3.0" },
+    { name = "langgraph", specifier = ">=0.6.0" },
+    { name = "pydantic", specifier = ">=2.8.0" },
+    { name = "pytest", marker = "extra == 'dev'", specifier = ">=9.0.0" },
+    { name = "python-dotenv", specifier = ">=1.0.1" },
+]
+provides-extras = ["dev"]
+
+[[package]]
 name = "orjson"
 version = "3.11.9"
 source = { registry = "https://pypi.org/simple" }
@@ -971,38 +1003,6 @@ sdist = { url = "https://files.pythonhosted.org/packages/47/c6/ee486fd809e357697
 wheels = [
     { url = "https://files.pythonhosted.org/packages/d7/c1/eb8f9debc45d3b7918a32ab756658a0904732f75e555402972246b0b8e71/tenacity-9.1.4-py3-none-any.whl", hash = "sha256:6095a360c919085f28c6527de529e76a06ad89b23659fa881ae0649b867a9d55", size = 28926, upload-time = "2026-02-07T10:45:32.24Z" },
 ]
-
-[[package]]
-name = "travelbuddy-langgraph-lab"
-version = "0.1.0"
-source = { virtual = "." }
-dependencies = [
-    { name = "langchain" },
-    { name = "langchain-core" },
-    { name = "langchain-google-genai" },
-    { name = "langchain-ollama" },
-    { name = "langgraph" },
-    { name = "pydantic" },
-    { name = "python-dotenv" },
-]
-
-[package.optional-dependencies]
-dev = [
-    { name = "pytest" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "langchain", specifier = ">=1.0.0" },
-    { name = "langchain-core", specifier = ">=0.3.0" },
-    { name = "langchain-google-genai", specifier = ">=2.1.0" },
-    { name = "langchain-ollama", specifier = ">=0.3.0" },
-    { name = "langgraph", specifier = ">=0.6.0" },
-    { name = "pydantic", specifier = ">=2.8.0" },
-    { name = "pytest", marker = "extra == 'dev'", specifier = ">=9.0.0" },
-    { name = "python-dotenv", specifier = ">=1.0.1" },
-]
-provides-extras = ["dev"]
 
 [[package]]
 name = "typing-extensions"

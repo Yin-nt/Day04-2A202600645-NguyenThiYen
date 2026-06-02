@@ -1,5 +1,5 @@
 from __future__ import annotations
-
+import time 
 import ast
 import json
 import re
@@ -12,6 +12,7 @@ from langchain_core.tools import tool
 
 from simple_solution.utils.data_store import OrderDataStore
 from src.core.llm import build_chat_model, normalize_content
+
 from src.core.schemas import AgentResult, OrderLineInput, ToolCallRecord
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
